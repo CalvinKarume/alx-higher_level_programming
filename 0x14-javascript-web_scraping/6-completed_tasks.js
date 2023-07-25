@@ -5,7 +5,7 @@ const url = process.argv[2];
 
 request(url, function (err, response, body) {
   if (err) {
-    console.log(err);
+    console.error(err);
   } else if (response.statusCode === 200) {
     const completed = {};
     const tasks = JSON.parse(body);
@@ -21,6 +21,6 @@ request(url, function (err, response, body) {
     }
     console.log(completed);
   } else {
-    console.log('An error occured. Status code: ' + response.statusCode);
+    console.error('An error occurred. Status code:', response.statusCode, response.statusMessage);
   }
 });
